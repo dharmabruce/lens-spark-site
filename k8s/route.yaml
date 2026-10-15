@@ -1,0 +1,20 @@
+# TLS terminates at the router. Starts on the router's default certificate;
+# once certificate.yaml has issued, add:
+#   tls.externalCertificate.name: lens-spark-tls
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: lens-spark
+  namespace: lens-spark
+  labels:
+    app: httpd
+spec:
+  host: lens-spark.dharmabruce.com
+  to:
+    kind: Service
+    name: httpd
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

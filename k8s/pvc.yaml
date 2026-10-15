@@ -1,0 +1,12 @@
+# Holds the one-page site and the beta APK (a few MB), copied in with oc cp.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: site-content
+  namespace: lens-spark
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

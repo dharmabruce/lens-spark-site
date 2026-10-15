@@ -1,0 +1,16 @@
+# Let's Encrypt certificate via HTTP-01. Stays Pending until the
+# lens-spark.dharmabruce.com CNAME points at this cluster's ingress, then issues automatically.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: lens-spark-tls
+  namespace: lens-spark
+  labels:
+    app: httpd
+spec:
+  secretName: lens-spark-tls
+  dnsNames:
+    - lens-spark.dharmabruce.com
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod

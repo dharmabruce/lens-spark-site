@@ -1,0 +1,10 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: router-read-lens-spark-tls
+  namespace: lens-spark
+rules:
+  - apiGroups: [""]
+    resources: [secrets]
+    resourceNames: [lens-spark-tls]
+    verbs: [get, list, watch]

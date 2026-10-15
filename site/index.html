@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LensSpark beta</title>
+<meta name="description" content="Mirror your Android phone screen to INMO GO3 glasses. Free beta.">
+<link rel="icon" href="favicon.png">
+<style>
+  :root {
+    --bg: #000;
+    --panel: #0c1210;
+    --line: #1d2b26;
+    --text: #e6f2ee;
+    --muted: #9fb5ad;
+    --accent: #2ef0a0;
+    --accent-ink: #00110a;
+    --warn: #ffcf66;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 760px; margin: 0 auto; padding: 0 16px 64px; }
+  header { text-align: center; padding: 32px 0 8px; }
+  header img { width: 220px; height: 220px; display: block; margin: 0 auto -24px; }
+  h1 { font-size: 2.4rem; margin: 0; letter-spacing: -0.02em; }
+  .tag { color: var(--muted); font-size: 1.15rem; margin: 6px 0 24px; }
+  .beta { color: var(--accent); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .download {
+    display: inline-block; background: var(--accent); color: var(--accent-ink);
+    font-weight: 700; font-size: 1.1rem; text-decoration: none;
+    padding: 14px 28px; border-radius: 999px;
+    box-shadow: 0 0 32px rgba(46, 240, 160, 0.35);
+  }
+  .download:focus-visible { outline: 3px solid var(--text); outline-offset: 3px; }
+  .meta { color: var(--muted); font-size: 0.85rem; margin-top: 12px; overflow-wrap: anywhere; }
+  .meta code { font-size: 0.8rem; }
+  h2 { font-size: 1.4rem; margin: 48px 0 12px; }
+  h3 { font-size: 1.05rem; margin: 0 0 4px; }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+  .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .safety { border-color: #4a3c14; }
+  .safety p strong { color: var(--warn); }
+  ol, ul { padding-left: 1.3em; }
+  li { margin: 4px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  a { color: var(--accent); }
+  footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); margin-top: 56px; padding-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="logo.png" alt="" width="220" height="220">
+    <div class="beta">Free beta · 0.9.0-beta.1</div>
+    <h1>LensSpark</h1>
+    <p class="tag">Your Android phone's screen, on your INMO GO3 glasses.</p>
+    <a class="download" href="LensSpark-0.9.0-beta.1.apk" download>Download for Android</a>
+    <p class="meta">Android 13 or newer · about 0.5 MB<br>
+      SHA-256 <code>41c4a55eaf692ff08a7e2f2c7749bb4c18208b11a8fe2ae4674ce3eff93583c8</code></p>
+  </header>
+
+  <p>LensSpark shows what's on your phone on the glasses as a slow slideshow: the newest picture about
+    once a second. It isn't video, but it's great for anything you'd glance at.</p>
+
+  <h2>What it's good for</h2>
+  <div class="grid">
+    <div class="card"><h3>Sing along</h3><p>Spotify with lyrics on screen: the words follow the song.</p></div>
+    <div class="card"><h3>Read a book</h3><p>Kindle or any e-reader. Landscape and a dark theme read best.</p></div>
+    <div class="card safety"><h3>Maps</h3><p>Google Maps, Waze and other maps. <strong>Be safe: don't let the glasses
+      take your eyes off the road, and follow local laws.</strong></p></div>
+    <div class="card"><h3>Follow the game</h3><p>Keep a scoreboard or play-by-play in view.</p></div>
+    <div class="card"><h3>Browse</h3><p>Web pages, articles, recipes while your hands are busy.</p></div>
+    <div class="card"><h3>Your feeds</h3><p>Keep up on social feeds, news and messages.</p></div>
+  </div>
+
+  <h2>Hands-free control</h2>
+  <p>There's no ring control yet; you control what's shown from the phone. Android's
+    <strong>Voice Access</strong> works really well once you learn it ("scroll down", "tap Next"), and
+    Bixby or Google Assistant can get you a long way.</p>
+
+  <h2>Install</h2>
+  <ol>
+    <li>Download the APK on your phone and open it. If Android asks, allow your browser (or Discord) to
+      install unknown apps. Play Protect may warn about an unknown developer: choose <em>Install anyway</em>.</li>
+    <li>Open LensSpark and tap <strong>Connect</strong>. Allow Nearby devices and notifications.</li>
+    <li>Tap <strong>Share screen</strong> and accept Android's screen-sharing prompt.</li>
+  </ol>
+
+  <h2>Two ways to connect</h2>
+  <table>
+    <tr><th></th><th>GATT (default)</th><th>RFCOMM (Advanced)</th></tr>
+    <tr><th>INMO Global</th><td>Keeps working alongside LensSpark</td><td>Must unbind the glasses from INMO Global first</td></tr>
+    <tr><th>Speed</th><td>About 8 KB/s</td><td>About 35 KB/s, roughly 4× faster</td></tr>
+    <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you</td></tr>
+    <tr><th>Going back</th><td>Nothing to do</td><td>Tap Unbind in LensSpark, then pair and bind in INMO Global as at first setup</td></tr>
+  </table>
+  <p class="muted">Start with GATT. Change transport in Advanced, only while not connected.</p>
+
+  <h2>Good to know</h2>
+  <ul>
+    <li><strong>Locking the phone stops sharing.</strong> Android ends screen capture on lock. Unlock and tap Share screen.</li>
+    <li>High quality is the slowest. Use Fast or Balanced for anything that moves.</li>
+    <li>While sharing, the glasses' display won't stay asleep. Stop sharing to let it sleep.</li>
+    <li>With GATT, INMO Global navigation and your shared screen take turns on the display.</li>
+    <li>Secure screens (banking apps, password fields, most video apps) show as black, as Android does.</li>
+    <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries.</li>
+  </ul>
+
+  <h2>Privacy</h2>
+  <p>No internet permission, no analytics, no accounts. Nothing captured is saved. Your screen goes from
+    your phone to your glasses over Bluetooth and nowhere else.</p>
+
+  <footer>
+    LensSpark is an independent project, not affiliated with or endorsed by INMO. Product names belong to
+    their owners. Beta software: use at your own risk.
+  </footer>
+</main>
+</body>
+</html>
