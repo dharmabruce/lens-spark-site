@@ -1,6 +1,6 @@
-# TLS terminates at the router. Starts on the router's default certificate;
-# once certificate.yaml has issued, add:
-#   tls.externalCertificate.name: lens-spark-tls
+# TLS terminates at the router with the Let's Encrypt certificate issued by
+# certificate.yaml (cut over 2026-10-15). cert-manager renews the secret; the
+# router picks up renewals via externalCertificate.
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -18,3 +18,5 @@ spec:
   tls:
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
+    externalCertificate:
+      name: lens-spark-tls
