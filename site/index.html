@@ -54,6 +54,11 @@
   th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
   th { color: var(--muted); font-weight: 600; }
   a { color: var(--accent); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 12px 0 8px; }
+  .steps figure { margin: 0; }
+  .steps img { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); }
+  .steps figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+  .steps figcaption b { color: var(--text); }
   footer { color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--line); margin-top: 56px; padding-top: 16px; }
 </style>
 </head>
@@ -102,9 +107,38 @@
     <tr><th>INMO Global</th><td>Keeps working alongside LensSpark</td><td>Must unbind the glasses from INMO Global first</td></tr>
     <tr><th>Speed</th><td>About 8 KB/s</td><td>About 35 KB/s, roughly 4× faster</td></tr>
     <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you</td></tr>
-    <tr><th>Going back</th><td>Nothing to do</td><td>Tap Unbind in LensSpark, then pair and bind in INMO Global as at first setup</td></tr>
+    <tr><th>Going back</th><td>Nothing to do</td><td>Unbind in LensSpark, then reconnect in INMO Global (below)</td></tr>
   </table>
   <p class="muted">Start with GATT. Change transport in Advanced, only while not connected.</p>
+
+  <h2>Switching to RFCOMM</h2>
+  <p>In INMO Global, unbind the glasses first:</p>
+  <div class="steps">
+    <figure><img src="img/inmo-glasses-tab.jpg" alt="INMO Global Glasses tab with the settings button at the right of the control row" width="720" height="540" loading="lazy">
+      <figcaption><b>1.</b> Open the <b>Glasses</b> tab and tap the settings button.</figcaption></figure>
+    <figure><img src="img/inmo-settings.jpg" alt="INMO Global glasses settings list ending in Unbind" width="720" height="1000" loading="lazy">
+      <figcaption><b>2.</b> Scroll down and tap <b>Unbind</b>.</figcaption></figure>
+    <figure><img src="img/inmo-unbind.jpg" alt="Unbind? confirmation dialog" width="720" height="610" loading="lazy">
+      <figcaption><b>3.</b> Confirm <b>Unbind</b>.</figcaption></figure>
+  </div>
+  <p>Then in LensSpark: Advanced → Transport → <b>RFCOMM</b>, tap <b>Connect</b>, and confirm <b>Bind glasses to
+    LensSpark</b>. Approve Android's prompts to pair and to let LensSpark manage the glasses.</p>
+
+  <h2>Going back to INMO Global</h2>
+  <p>In LensSpark, tap <b>Unbind</b>. It releases the glasses and removes the phone's Bluetooth pairing.
+    Then in INMO Global:</p>
+  <div class="steps">
+    <figure><img src="img/inmo-connect.jpg" alt="INMO Global home card with a Connect button" width="720" height="190" loading="lazy">
+      <figcaption><b>1.</b> Tap <b>Connect</b> on the home screen.</figcaption></figure>
+    <figure><img src="img/inmo-found.jpg" alt="New Glasses Found dialog with Connect button" width="720" height="610" loading="lazy">
+      <figcaption><b>2.</b> <b>New Glasses Found</b>: tap <b>Connect</b>, then accept Android's pairing request.</figcaption></figure>
+    <figure><img src="img/inmo-connected.jpg" alt="Connected successfully screen with Next button" width="720" height="620" loading="lazy">
+      <figcaption><b>3.</b> <b>Connected successfully</b>: tap <b>Next</b>, then <b>Done</b> on the permissions page.</figcaption></figure>
+    <figure><img src="img/inmo-access.jpg" alt="Android dialog asking to allow INMO Global to access the glasses" width="604" height="342" loading="lazy">
+      <figcaption><b>4.</b> Tap <b>Agree</b> to let INMO Global access the glasses.</figcaption></figure>
+  </div>
+  <p class="muted">If LensSpark says it couldn't remove the pairing, remove the glasses in Android's Bluetooth
+    settings before step 1.</p>
 
   <h2>Good to know</h2>
   <ul>
