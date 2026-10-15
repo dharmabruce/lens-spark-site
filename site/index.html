@@ -74,13 +74,14 @@
       SHA-256 <code>98e57cbe8a39aee9dae3382242be373a8c760d328d4c05a0b2e0a11b03446b28</code></p>
   </header>
 
-  <p>LensSpark shows what's on your phone on the glasses as a slow slideshow: the newest picture about
-    once a second. It isn't video, but it's great for anything you'd glance at.</p>
+  <p>LensSpark shows what's on your phone on the glasses at about one screenshot per second (up to about four
+    with RFCOMM, below). It isn't video, but it's great for anything you'd glance at. Landscape and a dark theme
+    read best.</p>
 
   <h2>What it's good for</h2>
   <div class="grid">
     <div class="card"><h3>Sing along</h3><p>Spotify with lyrics on screen: the words follow the song.</p></div>
-    <div class="card"><h3>Read a book</h3><p>Kindle or any e-reader. Landscape and a dark theme read best.</p></div>
+    <div class="card"><h3>Read a book</h3><p>Kindle or any e-reader app.</p></div>
     <div class="card safety"><h3>Maps</h3><p>Google Maps, Waze and other maps. <strong>Be safe: don't let the glasses
       take your eyes off the road, and follow local laws.</strong></p></div>
     <div class="card"><h3>Follow the game</h3><p>Keep a scoreboard or play-by-play in view.</p></div>
@@ -89,7 +90,7 @@
   </div>
 
   <h2>Hands-free control</h2>
-  <p>There's no ring control yet; you control what's shown from the phone. Android's
+  <p>There's no ring control; you control what's shown from the phone. Android's
     <strong>Voice Access</strong> works really well once you learn it ("scroll down", "tap Next"), and
     Bixby or Google Assistant can get you a long way.</p>
 
@@ -105,17 +106,18 @@
   <table>
     <tr><th></th><th>GATT (default)</th><th>RFCOMM (Advanced)</th></tr>
     <tr><th>INMO Global</th><td>Keeps working alongside LensSpark</td><td>Must unbind the glasses from INMO Global first</td></tr>
-    <tr><th>Speed</th><td>About 8 KB/s</td><td>About 35 KB/s, roughly 4× faster</td></tr>
+    <tr><th>Speed</th><td>About 1 frame per second (8&nbsp;KB/s)</td><td>Up to about 4 frames per second (35&nbsp;KB/s)</td></tr>
     <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you</td></tr>
     <tr><th>Going back</th><td>Nothing to do</td><td>Unbind in LensSpark, then reconnect in INMO Global (below)</td></tr>
   </table>
   <p class="muted">Start with GATT. Change transport in Advanced, only while not connected.</p>
 
   <h2>Switching to RFCOMM</h2>
-  <p>In INMO Global, unbind the glasses first:</p>
+  <p>In INMO Global, unbind the glasses first. Unbinding resets INMO Global's settings, such as which apps send
+    notifications to the glasses, so you'll set them again when you go back.</p>
   <div class="steps">
-    <figure><img src="img/inmo-glasses-tab.jpg" alt="INMO Global Glasses tab with the settings button at the right of the control row" width="720" height="540" loading="lazy">
-      <figcaption><b>1.</b> Open the <b>Glasses</b> tab and tap the settings button.</figcaption></figure>
+    <figure><img src="img/inmo-glasses-tab.jpg" alt="INMO Global Glasses tab, with the Glasses tab at bottom right and the settings button highlighted" width="720" height="630" loading="lazy">
+      <figcaption><b>1.</b> Tap <b>Glasses</b> at the bottom right, then the settings button.</figcaption></figure>
     <figure><img src="img/inmo-settings.jpg" alt="INMO Global glasses settings list ending in Unbind" width="720" height="1000" loading="lazy">
       <figcaption><b>2.</b> Scroll down and tap <b>Unbind</b>.</figcaption></figure>
     <figure><img src="img/inmo-unbind.jpg" alt="Unbind? confirmation dialog" width="720" height="610" loading="lazy">
@@ -145,18 +147,23 @@
     <li><strong>Locking the phone stops sharing.</strong> Android ends screen capture on lock. Unlock and tap Share screen.</li>
     <li>High quality is the slowest. Use Fast or Balanced for anything that moves.</li>
     <li>While sharing, the glasses' display won't stay asleep. Stop sharing to let it sleep.</li>
-    <li>With GATT, INMO Global navigation and your shared screen take turns on the display.</li>
+    <li>While you share, LensSpark has the glasses' display: glasses apps and INMO Global navigation aren't usable
+      at the same time. Stop sharing to use them.</li>
+    <li>Unbinding in INMO Global (needed for RFCOMM) resets its settings, including per-app notification
+      choices. You'll set them again after reconnecting.</li>
     <li>Secure screens (banking apps, password fields, most video apps) show as black, as Android does.</li>
     <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries.</li>
   </ul>
 
   <h2>Privacy</h2>
   <p>No internet permission, no analytics, no accounts. Nothing captured is saved. Your screen goes from
-    your phone to your glasses over Bluetooth and nowhere else.</p>
+    your phone to your glasses over Bluetooth and nowhere else. LensSpark relies on Bluetooth's own pairing
+    encryption and adds none of its own.</p>
 
   <footer>
     LensSpark is an independent project, not affiliated with or endorsed by INMO. Product names belong to
-    their owners. Beta software: use at your own risk.
+    their owners. INMO software updates may change the glasses in ways that stop LensSpark from working.
+    Beta software: use at your own risk.
   </footer>
 </main>
 </body>
