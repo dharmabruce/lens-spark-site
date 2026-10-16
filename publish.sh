@@ -5,6 +5,10 @@
 set -eu
 apk=$1 version=$2
 cd "$(dirname "$0")"
+# Publish only what's committed on main: never a review branch or uncommitted edits.
+branch=$(git rev-parse --abbrev-ref HEAD)
+[ "$branch" = main ] || { echo "publish.sh: on '$branch', not main; switch to main first" >&2; exit 1; }
+[ -z "$(git status --porcelain)" ] || { echo "publish.sh: uncommitted changes; commit or stash them first" >&2; exit 1; }
 pod=$(oc -n lens-spark get pod -l app=httpd -o jsonpath='{.items[0].metadata.name}')
 oc -n lens-spark cp site/. "$pod:/var/www/html/"
 oc -n lens-spark cp "$apk" "$pod:/var/www/html/LensSpark-$version.apk"
