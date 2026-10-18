@@ -46,6 +46,11 @@
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
   .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
   .card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  .card img, .demo img, .demo video { width: 100%; height: auto; display: block; border-radius: 10px; background: #000; border: 1px solid var(--line); }
+  .card img { margin-bottom: 12px; }
+  .demo { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 12px 0 8px; }
+  .demo figure { margin: 0; }
+  .demo figcaption { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
   .safety { border-color: #4a3c14; }
   .safety p strong { color: var(--warn); }
   ol, ul { padding-left: 1.3em; }
@@ -66,27 +71,39 @@
 <main>
   <header>
     <img src="logo.png" alt="" width="220" height="220">
-    <div class="beta">Free beta · 0.9.0-beta.1</div>
+    <div class="beta">Free beta · 0.9.0-beta.2</div>
     <h1>LensSpark</h1>
     <p class="tag">Your Android phone's screen, on your INMO GO3 glasses.</p>
-    <a class="download" href="LensSpark-0.9.0-beta.1.apk" download>Download for Android</a>
+    <a class="download" href="LensSpark-0.9.0-beta.2.apk" download>Download for Android</a>
     <p class="meta">Android 13 or newer · about 0.5 MB<br>
-      SHA-256 <code>98e57cbe8a39aee9dae3382242be373a8c760d328d4c05a0b2e0a11b03446b28</code></p>
+      SHA-256 <code>afe98c425ff06b8ab00d6fe8ab3aea314f2da35de0fb1f60d586c8dcfe246cf4</code></p>
   </header>
 
-  <p>LensSpark shows what's on your phone on the glasses at about one screenshot per second (up to about four per
-    second with RFCOMM, below). It isn't video, but it's great for anything you'd glance at. Landscape and a dark theme
-    read best.</p>
+  <p>LensSpark shows what's on your phone on the glasses at about two screenshots per second. RFCOMM (below) moves
+    about four times as much data, so busy screens like maps and video update much faster. The default <strong>Text</strong> quality (e-book mode) draws bright
+    text on black for fast, sharp reading. It isn't video, but it's great for anything you'd glance at. Landscape and
+    a dark theme read best.</p>
+
+  <h2>See it on the glasses</h2>
+  <div class="demo">
+    <figure><img src="img/glasses-real-glasses.png" alt="The glasses' display showing House of the Rising Sun lyrics in green, with the Stats strip reading 3.2 fps, 0.5 s lag, 3 KB" width="640" height="480">
+      <figcaption>Captured from the glasses: Spotify lyrics in Text mode over GATT. The Stats strip reads 3.2 frames per
+        second, 0.5 s lag, 3 KB per frame.</figcaption></figure>
+    <figure><video src="img/lensspark-demo.mp4" poster="img/lensspark-demo-poster.png" width="640" height="420" controls muted playsinline preload="none"></video>
+      <figcaption>Kindle, Spotify, Google Maps, scores, Wikipedia and YouTube, about 3 minutes. Rendered from a phone
+        screen recording with LensSpark's own Text code at 4 frames per second, the visible 640&times;420 area.</figcaption></figure>
+  </div>
 
   <h2>What it's good for</h2>
   <div class="grid">
-    <div class="card"><h3>Sing along</h3><p>Spotify with lyrics on screen: the words follow the song.</p></div>
-    <div class="card"><h3>Read a book</h3><p>Kindle or any e-reader app.</p></div>
-    <div class="card safety"><h3>Maps</h3><p>Google Maps, Waze and other maps. <strong>Be safe: don't let the glasses
+    <div class="card"><img src="img/glasses-sing.png" alt="Spotify lyrics on the glasses" width="640" height="420" loading="lazy"><h3>Sing along</h3><p>Spotify with lyrics on screen: the words follow the song.</p></div>
+    <div class="card"><img src="img/glasses-book.png" alt="A Kindle page on the glasses" width="640" height="420" loading="lazy"><h3>Read a book</h3><p>Kindle or any e-reader app.</p></div>
+    <div class="card safety"><img src="img/glasses-maps.png" alt="Google Maps route preview on the glasses" width="640" height="420" loading="lazy"><h3>Maps</h3><p>Google Maps, Waze and other maps. <strong>Be safe: don't let the glasses
       take your eyes off the road, and follow local laws.</strong></p></div>
-    <div class="card"><h3>Follow the game</h3><p>Keep a scoreboard or play-by-play in view.</p></div>
-    <div class="card"><h3>Browse</h3><p>Web pages, articles, recipes while your hands are busy.</p></div>
-    <div class="card"><h3>Your feeds</h3><p>Keep up on social feeds, news and messages.</p></div>
+    <div class="card"><img src="img/glasses-game.png" alt="A college football score on the glasses" width="640" height="420" loading="lazy"><h3>Follow the game</h3><p>Keep a scoreboard or play-by-play in view.</p></div>
+    <div class="card"><img src="img/glasses-browse.png" alt="A Wikipedia page on the glasses" width="640" height="420" loading="lazy"><h3>Browse</h3><p>Web pages, articles, recipes while your hands are busy.</p></div>
+    <div class="card"><img src="img/glasses-feeds.png" alt="News headlines on the glasses" width="640" height="420" loading="lazy"><h3>Your feeds</h3><p>Keep up on social feeds, news and messages.</p></div>
+    <div class="card"><img src="img/glasses-video.png" alt="A YouTube video playing on the glasses" width="640" height="420" loading="lazy"><h3>Watch</h3><p>YouTube shows as bold shapes in Text. Fast shows more detail.</p></div>
   </div>
 
   <h2>Hands-free control</h2>
@@ -96,7 +113,7 @@
 
   <h2>Install</h2>
   <ol>
-    <li>Download the APK on your phone and open it. If Android asks, allow your browser to install unknown
+    <li><a href="LensSpark-0.9.0-beta.2.apk" download>Download</a> the APK on your phone and open it. If Android asks, allow your browser to install unknown
       apps. Play Protect may warn about an unknown developer: choose <em>Install anyway</em>.</li>
     <li>Open LensSpark and tap <strong>Connect</strong>. Allow Nearby devices and notifications.</li>
     <li>Tap <strong>Share screen</strong> and accept Android's screen-sharing prompt.</li>
@@ -106,8 +123,8 @@
   <table>
     <tr><th></th><th>GATT (default)</th><th>RFCOMM (Advanced)</th></tr>
     <tr><th>INMO Global</th><td>Keeps working alongside LensSpark</td><td>Must unbind the glasses from INMO Global first</td></tr>
-    <tr><th>Speed</th><td>About 1 frame per second (8&nbsp;KB/s)</td><td>Up to about 4 frames per second (35&nbsp;KB/s)</td></tr>
-    <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you</td></tr>
+    <tr><th>Speed</th><td>About 2 frames per second in Text (8&nbsp;KB/s); busy screens slow down</td><td>About 4&times; faster (35&nbsp;KB/s): busy screens and video keep up, up to 5 frames per second</td></tr>
+    <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you (Android 17 or newer)</td></tr>
     <tr><th>Going back</th><td>Nothing to do</td><td>Unbind in LensSpark, then reconnect in INMO Global (below)</td></tr>
   </table>
   <p class="muted">Change transport in Advanced, only while not connected.</p>
@@ -145,7 +162,10 @@
   <h2>Good to know</h2>
   <ul>
     <li><strong>Locking the phone stops sharing.</strong> Android ends screen capture on lock. Unlock and tap Share screen.</li>
-    <li>High quality is the slowest. Use Fast or Balanced for anything that moves.</li>
+    <li><strong>RFCOMM: turn the glasses on before you tap Connect.</strong> Asleep glasses can't finish connecting
+      over RFCOMM. GATT connects either way.</li>
+    <li>Text (the default) is the fastest and best for reading. For photos and video, Fast, Balanced and High show
+      grays; High is the slowest.</li>
     <li>While sharing, the glasses' display won't stay asleep. Stop sharing to let it sleep.</li>
     <li>While you share, LensSpark has the glasses' display: glasses apps and INMO Global navigation aren't usable
       at the same time. Stop sharing to use them.</li>
