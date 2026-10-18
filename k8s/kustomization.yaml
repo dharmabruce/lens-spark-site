@@ -10,7 +10,9 @@ resources:
   - router-cert-role.yaml
   - router-cert-role-binding.yaml
   - pvc.yaml
+  - pvc-logs.yaml
   - httpd-remoteip.yaml
+  - httpd-accesslog.yaml
   - deployment.yaml
   - service.yaml
   - route.yaml

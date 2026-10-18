@@ -7,7 +7,7 @@ metadata:
     app: httpd
 spec:
   replicas: 1
-  # Recreate: site-content is RWO; a rolling update would deadlock on the volume.
+  # Recreate: site-content and site-logs are RWO; a rolling update would deadlock on the volume.
   strategy:
     type: Recreate
   selector:
@@ -54,6 +54,16 @@ spec:
               mountPath: /etc/httpd/conf.d/remoteip.conf
               subPath: remoteip.conf
               readOnly: true
+            - name: logs
+              mountPath: /var/log/lens-spark
+            - name: accesslog
+              mountPath: /etc/httpd/conf.d/accesslog.conf
+              subPath: accesslog.conf
+              readOnly: true
+            - name: accesslog
+              mountPath: /opt/lens-spark/hashlog.sh
+              subPath: hashlog.sh
+              readOnly: true
       volumes:
         - name: content
           persistentVolumeClaim:
@@ -61,3 +71,10 @@ spec:
         - name: remoteip
           configMap:
             name: httpd-remoteip
+        - name: logs
+          persistentVolumeClaim:
+            claimName: site-logs
+        - name: accesslog
+          configMap:
+            name: httpd-accesslog
+            defaultMode: 0555

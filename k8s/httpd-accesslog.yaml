@@ -1,0 +1,32 @@
+# A second access log, kept on the site-logs volume for stats.sh. Each visitor
+# address is replaced by a salted SHA-256 prefix before it is written, so unique
+# visitors can be counted without storing addresses. The salt is generated on
+# the volume on first use and never leaves it. The stdout log is unchanged.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: httpd-accesslog
+  namespace: lens-spark
+  labels:
+    app: httpd
+data:
+  accesslog.conf: |
+    LogFormat "%a %{%Y-%m-%dT%H:%M:%S%z}t \"%r\" %>s %B \"%{User-Agent}i\"" lensspark
+    CustomLog "|/opt/lens-spark/hashlog.sh /var/log/lens-spark" lensspark
+  hashlog.sh: |
+    #!/bin/sh
+    # Reads httpd's lensspark log on stdin; writes <dir>/access-YYYY-MM.log with
+    # the address replaced by a 12-hex-digit salted hash.
+    set -u
+    dir=$1
+    salt_file=$dir/.salt
+    if [ ! -s "$salt_file" ]; then
+      (umask 077; head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n' > "$salt_file")
+    fi
+    salt=$(cat "$salt_file")
+    umask 027
+    while IFS=' ' read -r addr when rest; do
+      id=$(printf '%s%s' "$salt" "$addr" | sha256sum | cut -c1-12)
+      month=${when%-??T*}
+      printf '%s %s %s\n' "$id" "$when" "$rest" >> "$dir/access-$month.log"
+    done

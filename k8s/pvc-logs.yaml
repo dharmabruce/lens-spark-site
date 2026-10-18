@@ -1,0 +1,13 @@
+# Holds the access log (hashed visitors, one file per month) so download counts
+# survive pod restarts. Separate from site-content so it is never served.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: site-logs
+  namespace: lens-spark
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi

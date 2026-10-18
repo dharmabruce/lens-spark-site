@@ -12,3 +12,10 @@ The one-page download site for the LensSpark beta.
 1. Build and sign the APK in the app repo.
 2. Update the version, file name and SHA-256 in `site/index.html`, and commit.
 3. `./publish.sh path/to/app-release.apk <version>`
+
+## Download counts
+
+`./stats.sh [YYYY-MM]` prints complete APK downloads per version and page views per day.
+httpd keeps a second access log on the `site-logs` volume (one file per month, never served),
+with each visitor address replaced by a salted hash, so counts survive pod restarts.
+Print counts only; never copy the log files off the cluster.
