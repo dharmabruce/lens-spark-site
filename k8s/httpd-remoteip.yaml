@@ -1,0 +1,15 @@
+# Log the visitor's address instead of the OpenShift router's: trust the router
+# (private addresses) and take the client from the X-Forwarded-For header it adds.
+# The existing combined log then records the real visitor, so unique visitors can
+# be counted. Report counts only; never publish or commit the addresses.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: httpd-remoteip
+  namespace: lens-spark
+  labels:
+    app: httpd
+data:
+  remoteip.conf: |
+    RemoteIPHeader X-Forwarded-For
+    RemoteIPInternalProxy 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16

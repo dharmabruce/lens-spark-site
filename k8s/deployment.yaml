@@ -50,7 +50,14 @@ spec:
           volumeMounts:
             - name: content
               mountPath: /var/www/html
+            - name: remoteip
+              mountPath: /etc/httpd/conf.d/remoteip.conf
+              subPath: remoteip.conf
+              readOnly: true
       volumes:
         - name: content
           persistentVolumeClaim:
             claimName: site-content
+        - name: remoteip
+          configMap:
+            name: httpd-remoteip
