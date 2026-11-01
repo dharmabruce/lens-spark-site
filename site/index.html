@@ -77,6 +77,8 @@
     <a class="download" href="LensSpark-0.9.0-beta.3.apk" download>Download for Android</a>
     <p class="meta">Android 13 or newer · about 0.5 MB<br>
       SHA-256 <code>e23b072d508e12d8a9f3d81ccd34625d895905c2c98b3a832aaaccd3db06342e</code></p>
+    <p class="meta"><strong>Used RFCOMM in an earlier beta?</strong> Tap Unbind in that version before updating
+      (<a href="#rfcomm">why</a>).</p>
   </header>
 
   <p>LensSpark shows what's on your phone on the glasses, live: the newest frame, as often as Bluetooth carries it.
@@ -117,11 +119,13 @@
   </div>
 
   <h2>AI on your glasses</h2>
-  <p>Ask on the phone, by voice or keyboard, and read the answer on the glasses. Any AI app works the same way,
-    because LensSpark shows whatever is on your screen.</p>
+  <p>Ask on the phone, by voice or keyboard, and read the answer on the glasses. Other AI apps work the same way,
+    because LensSpark shows what's on your screen (apart from secure windows, which Android keeps black).</p>
+  <p class="muted">These views are rendered from phone screenshots with LensSpark's own image code, the way the
+    glasses draw them.</p>
   <div class="grid">
-    <div class="card"><img src="img/glasses-chatgpt.png" alt="A ChatGPT conversation on the glasses, in Balanced quality" width="640" height="420" loading="lazy"><h3>ChatGPT</h3><p>Follow a long answer without picking up the phone. Shown in Balanced quality, which keeps
-      chat bubbles readable.</p></div>
+    <div class="card"><img src="img/glasses-chatgpt.png" alt="A ChatGPT conversation on the glasses, in Balanced quality" width="640" height="420" loading="lazy"><h3>ChatGPT</h3><p>Read a long answer at eye level; scroll on the phone or with Voice Access. Shown in Balanced
+      quality, which keeps chat bubbles readable.</p></div>
     <div class="card"><img src="img/glasses-claude.png" alt="A Claude conversation on the glasses, in Balanced quality" width="640" height="420" loading="lazy"><h3>Claude</h3><p>Read Claude's replies as they come in. Shown in Balanced quality.</p></div>
     <div class="card"><img src="img/glasses-gemini.png" alt="A Gemini conversation on the glasses" width="640" height="420" loading="lazy"><h3>Gemini</h3><p>Google's assistant, answer in view.</p></div>
     <div class="card"><img src="img/glasses-terminal.png" alt="Claude Code running in a terminal, on the glasses" width="640" height="420" loading="lazy"><h3>Terminal</h3><p>Keep a coding agent such as Claude Code in view, in a terminal app on the
@@ -139,7 +143,7 @@
       apps. Play Protect may warn about an unknown developer: choose <em>Install anyway</em>.</li>
     <li>Open LensSpark and tap <strong>Share screen</strong>. Allow Nearby devices and notifications when asked.
       LensSpark finds and pairs the glasses if needed.</li>
-    <li>Accept Android's screen-sharing prompt. The glasses show your screen.</li>
+    <li>Accept Android's screen-sharing prompt. The glasses show "Ready to share", then your screen.</li>
   </ol>
   <p><strong>Stop sharing</strong> leaves the glasses connected, so the next Share screen goes straight to Android's
     prompt. LensSpark disconnects by itself after 10 minutes without sharing, or tap <strong>Disconnect</strong> in
@@ -155,9 +159,9 @@
     unbinds the glasses and never removes the phone's Bluetooth pairing. Disconnecting only closes LensSpark's own
     connection (the glasses show "Not connected").</p>
 
-  <h2>Used RFCOMM in Beta 1 or 2?</h2>
-  <p>RFCOMM needed the glasses unbound from INMO Global. Before updating, tap <b>Unbind</b> in your current
-    LensSpark, then reconnect the glasses in INMO Global if you use it:</p>
+  <h2 id="rfcomm">Used RFCOMM in Beta 1 or 2?</h2>
+  <p>RFCOMM needed the glasses unbound from INMO Global, and Beta 3 can't unbind them for you. Before updating,
+    tap <b>Unbind</b> in your current LensSpark, then reconnect the glasses in INMO Global if you use it:</p>
   <div class="steps">
     <figure><img src="img/inmo-connect.jpg" alt="INMO Global home card with a Connect button" width="720" height="190" loading="lazy">
       <figcaption><b>1.</b> Tap <b>Connect</b> on the home screen.</figcaption></figure>
@@ -192,14 +196,16 @@
       it; your screen is back as soon as you wake them.</li>
     <li>While you share, LensSpark has the glasses' display: glasses apps and INMO Global navigation aren't usable
       at the same time. Stop sharing to use them.</li>
-    <li>Secure screens (banking apps, password fields, most video apps) show as black, as Android does.</li>
-    <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries (within about 2 minutes).</li>
+    <li>Secure windows (banking apps, passwords) show as black, as Android does.</li>
+    <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries (within about 2 minutes). If that
+      fails, the last image may stay on the glasses.</li>
     <li><strong>Battery:</strong> in our tests a GO3 battery lasted about 1.5 to 2.5 hours. The battery swaps, but doing so reboots the glasses &mdash; a spare keeps you going after the reboot, reconnecting, and tapping Share screen again.</li>
   </ul>
 
   <h2>Privacy</h2>
-  <p>No internet permission, no analytics, no accounts. Nothing captured is saved. Your screen goes from
-    your phone to your glasses over Bluetooth and nowhere else. LensSpark relies on Bluetooth's own pairing
+  <p>LensSpark has no internet permission, no analytics and no accounts, and saves nothing it captures. It sends
+    your screen from your phone to your glasses over Bluetooth and nowhere else. The apps you mirror, such as AI
+    assistants, keep their own accounts and privacy practices. LensSpark relies on Bluetooth's own pairing
     encryption and adds none of its own.</p>
 
   <footer>
