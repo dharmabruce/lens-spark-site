@@ -1,0 +1,17 @@
+# Make browsers check the page with the server on every visit (a cheap 304 when
+# unchanged). Without this, Chrome reuses a saved copy for hours or days after a
+# release, and returning visitors tap a stale button for the previous APK
+# (seen after the Beta 3 release, 2026-11-01). APKs keep the default caching:
+# each version has its own file name.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: httpd-cache
+  namespace: lens-spark
+  labels:
+    app: httpd
+data:
+  cache.conf: |
+    <Files "index.html">
+      Header set Cache-Control "no-cache"
+    </Files>

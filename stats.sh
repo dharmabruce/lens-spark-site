@@ -6,7 +6,7 @@ set -eu
 month=${1:-*}
 oc -n lens-spark exec deploy/httpd -- sh -c "cat /var/log/lens-spark/access-$month.log" |
 awk -F'"' '
-  tolower($4) ~ /bot|crawl|spider|slurp|preview/ { next }
+  tolower($4) ~ /bot|crawl|spider|slurp|preview|^curl|^wget/ { next }
   {
     split($1, a, " "); id = a[1]; day = substr(a[2], 1, 10)
     split($2, r, " "); path = r[2]; sub(/\?.*/, "", path)

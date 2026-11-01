@@ -13,6 +13,7 @@ resources:
   - pvc-logs.yaml
   - httpd-remoteip.yaml
   - httpd-accesslog.yaml
+  - httpd-cache.yaml
   - deployment.yaml
   - service.yaml
   - route.yaml
