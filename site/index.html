@@ -71,18 +71,28 @@
 <main>
   <header>
     <img src="logo.png" alt="" width="220" height="220">
-    <div class="beta">Free beta · 0.9.0-beta.2</div>
+    <div class="beta">Free beta · 0.9.0-beta.3</div>
     <h1>LensSpark</h1>
     <p class="tag">Your Android phone's screen, on your INMO GO3 glasses.</p>
-    <a class="download" href="LensSpark-0.9.0-beta.2.apk" download>Download for Android</a>
+    <a class="download" href="LensSpark-0.9.0-beta.3.apk" download>Download for Android</a>
     <p class="meta">Android 13 or newer · about 0.5 MB<br>
-      SHA-256 <code>afe98c425ff06b8ab00d6fe8ab3aea314f2da35de0fb1f60d586c8dcfe246cf4</code></p>
+      SHA-256 <code>e23b072d508e12d8a9f3d81ccd34625d895905c2c98b3a832aaaccd3db06342e</code></p>
   </header>
 
-  <p>LensSpark shows what's on your phone on the glasses at about two screenshots per second. RFCOMM (below) moves
-    about four times as much data, so busy screens like maps and video update much faster. The default <strong>Text</strong> quality (e-book mode) draws bright
-    text on black for fast, sharp reading. It isn't video, but it's great for anything you'd glance at. Landscape and
-    a dark theme read best.</p>
+  <p>LensSpark shows what's on your phone on the glasses, live: the newest frame, as often as Bluetooth carries it.
+    The default <strong>Text</strong> quality (e-book mode) draws bright text on black for fast, sharp reading, at about
+    6 to 8 frames per second; the detailed qualities run at about 1 to 2. It isn't smooth video, but it's great for
+    anything you'd glance at. Landscape and a dark theme read best.</p>
+
+  <h2>New in Beta 3</h2>
+  <ul>
+    <li><strong>One button.</strong> Share screen connects and shares; Stop sharing leaves the glasses connected.</li>
+    <li><strong>Quick Settings tile.</strong> Share your screen from any app without leaving it.</li>
+    <li><strong>Faster by itself.</strong> LensSpark adjusts its sending speed to the link, so the separate RFCOMM
+      mode is gone and you never need to unbind the glasses from INMO Global.</li>
+    <li><strong>More reliable connecting</strong> on glasses firmware 3.0.407, including with INMO Global connected.</li>
+    <li><strong>Image quality slider</strong> and an optional status bar on the glasses (frame rate, lag, battery).</li>
+  </ul>
 
   <h2>See it on the glasses</h2>
   <div class="demo">
@@ -113,39 +123,29 @@
 
   <h2>Install</h2>
   <ol>
-    <li><a href="LensSpark-0.9.0-beta.2.apk" download>Download</a> the APK on your phone and open it. If Android asks, allow your browser to install unknown
+    <li><a href="LensSpark-0.9.0-beta.3.apk" download>Download</a> the APK on your phone and open it. If Android asks, allow your browser to install unknown
       apps. Play Protect may warn about an unknown developer: choose <em>Install anyway</em>.</li>
-    <li>Open LensSpark and tap <strong>Connect</strong>. Allow Nearby devices and notifications.</li>
-    <li>Tap <strong>Share screen</strong> and accept Android's screen-sharing prompt.</li>
+    <li>Open LensSpark and tap <strong>Share screen</strong>. Allow Nearby devices and notifications when asked.
+      LensSpark finds and pairs the glasses if needed.</li>
+    <li>Accept Android's screen-sharing prompt. The glasses show your screen.</li>
   </ol>
+  <p><strong>Stop sharing</strong> leaves the glasses connected, so the next Share screen goes straight to Android's
+    prompt. LensSpark disconnects by itself after 10 minutes without sharing, or tap <strong>Disconnect</strong> in
+    its notification.</p>
 
-  <h2>Two ways to connect</h2>
-  <table>
-    <tr><th></th><th>GATT (default)</th><th>RFCOMM (Advanced)</th></tr>
-    <tr><th>INMO Global</th><td>Keeps working alongside LensSpark</td><td>Must unbind the glasses from INMO Global first</td></tr>
-    <tr><th>Speed</th><td>About 2 frames per second in Text (8&nbsp;KB/s); busy screens slow down</td><td>About 4&times; faster (35&nbsp;KB/s): busy screens and video keep up, up to 5 frames per second</td></tr>
-    <tr><th>Glasses audio</th><td>Works if already connected</td><td>LensSpark connects it for you (Android 17 or newer)</td></tr>
-    <tr><th>Going back</th><td>Nothing to do</td><td>Unbind in LensSpark, then reconnect in INMO Global (below)</td></tr>
-  </table>
-  <p class="muted">Change transport in Advanced, only while not connected.</p>
+  <h2>Quick Settings tile</h2>
+  <p>Open Quick Settings, choose <strong>Edit</strong>, and add the <strong>LensSpark</strong> tile. Then, from
+    any app, tap the tile: LensSpark connects if needed, Android asks to share your screen, and you stay in the app
+    you were using. Tap the tile again to stop sharing; the glasses stay connected.</p>
 
-  <h2>Switching to RFCOMM</h2>
-  <p>In INMO Global, unbind the glasses first. Unbinding resets INMO Global's settings, such as which apps send
-    notifications to the glasses, so you'll set them again when you go back.</p>
-  <div class="steps">
-    <figure><img src="img/inmo-glasses-tab.jpg" alt="INMO Global Glasses tab, with the Glasses tab at bottom right and the settings button highlighted" width="720" height="630" loading="lazy">
-      <figcaption><b>1.</b> Tap <b>Glasses</b> at the bottom right, then the settings button.</figcaption></figure>
-    <figure><img src="img/inmo-settings.jpg" alt="INMO Global glasses settings list ending in Unbind" width="720" height="1000" loading="lazy">
-      <figcaption><b>2.</b> Scroll down and tap <b>Unbind</b>.</figcaption></figure>
-    <figure><img src="img/inmo-unbind.jpg" alt="Unbind? confirmation dialog" width="720" height="610" loading="lazy">
-      <figcaption><b>3.</b> Confirm <b>Unbind</b>.</figcaption></figure>
-  </div>
-  <p>Then in LensSpark: Advanced → Transport → <b>RFCOMM</b>, tap <b>Connect</b>, and confirm <b>Bind glasses to
-    LensSpark</b>. Approve Android's prompts to pair and to let LensSpark manage the glasses.</p>
+  <h2>Works alongside INMO Global</h2>
+  <p>Keep INMO Global installed, bound and running if you like; LensSpark doesn't need it. LensSpark never binds or
+    unbinds the glasses and never removes the phone's Bluetooth pairing. Disconnecting only closes LensSpark's own
+    connection (the glasses show "Not connected").</p>
 
-  <h2>Going back to INMO Global</h2>
-  <p>In LensSpark, tap <b>Unbind</b>. It releases the glasses and removes the phone's Bluetooth pairing.
-    Then in INMO Global:</p>
+  <h2>Used RFCOMM in Beta 1 or 2?</h2>
+  <p>RFCOMM needed the glasses unbound from INMO Global. Before updating, tap <b>Unbind</b> in your current
+    LensSpark, then reconnect the glasses in INMO Global if you use it:</p>
   <div class="steps">
     <figure><img src="img/inmo-connect.jpg" alt="INMO Global home card with a Connect button" width="720" height="190" loading="lazy">
       <figcaption><b>1.</b> Tap <b>Connect</b> on the home screen.</figcaption></figure>
@@ -156,24 +156,33 @@
     <figure><img src="img/inmo-access.jpg" alt="Android dialog asking to allow INMO Global to access the glasses" width="604" height="342" loading="lazy">
       <figcaption><b>4.</b> Tap <b>Agree</b> to let INMO Global access the glasses.</figcaption></figure>
   </div>
-  <p class="muted">If LensSpark says it couldn't remove the pairing, remove the glasses in Android's Bluetooth
+  <p class="muted">If LensSpark said it couldn't remove the pairing, remove the glasses in Android's Bluetooth
     settings before step 1.</p>
+
+  <h2>Can't connect?</h2>
+  <ul>
+    <li><strong>The glasses show a language or setup screen:</strong> finish setup on the glasses (choose a language), then tap Share screen.</li>
+    <li><strong>"Android can't see the glasses' image service":</strong> turn the phone's Bluetooth off and on, then tap Share screen.</li>
+    <li><strong>Still stuck:</strong> turn the glasses off and on, then try Share screen two or three times. If that
+      fails, remove the glasses in Android's Bluetooth settings and tap Share screen: LensSpark finds and pairs them again.</li>
+    <li>LensSpark is tested on glasses firmware 3.0.407; if yours is older, updating may help.</li>
+  </ul>
 
   <h2>Good to know</h2>
   <ul>
-    <li><strong>Locking the phone stops sharing.</strong> Android ends screen capture on lock. Unlock and tap Share screen.</li>
-    <li><strong>RFCOMM: turn the glasses on before you tap Connect.</strong> Asleep glasses can't finish connecting
-      over RFCOMM. GATT connects either way.</li>
+    <li><strong>Locking the phone stops sharing.</strong> Android ends screen capture on lock. LensSpark stays
+      connected; unlock and tap Share screen.</li>
+    <li>The frame rate follows the link: it drops while the glasses play audio, as you walk away from the phone, and
+      with other Bluetooth devices nearby, then recovers by itself.</li>
     <li>Text (the default) is the fastest and best for reading. For photos and video, Fast, Balanced and High show
       grays; High is the slowest.</li>
-    <li>While sharing, the glasses' display won't stay asleep. Stop sharing to let it sleep.</li>
+    <li>While sharing, the glasses' display won't go to sleep by itself. Press the glasses' power button to sleep
+      it; your screen is back as soon as you wake them.</li>
     <li>While you share, LensSpark has the glasses' display: glasses apps and INMO Global navigation aren't usable
       at the same time. Stop sharing to use them.</li>
-    <li>Unbinding in INMO Global (needed for RFCOMM) resets its settings, including per-app notification
-      choices. You'll set them again after reconnecting.</li>
     <li>Secure screens (banking apps, password fields, most video apps) show as black, as Android does.</li>
-    <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries.</li>
-    <li><strong>Battery:</strong> the GO3 runs about 2 to 2.5 hours per battery whether or not you're sharing &mdash; LensSpark streaming doesn't drain it much faster (measured over two runs, October 2026). The battery swaps, but doing so reboots the glasses &mdash; a spare keeps you going after the reboot, reconnecting, and tapping Share screen again.</li>
+    <li>If the connection drops, LensSpark reconnects by itself, up to 5 tries (within about 2 minutes).</li>
+    <li><strong>Battery:</strong> in our tests a GO3 battery lasted about 1.5 to 2.5 hours. The battery swaps, but doing so reboots the glasses &mdash; a spare keeps you going after the reboot, reconnecting, and tapping Share screen again.</li>
   </ul>
 
   <h2>Privacy</h2>
